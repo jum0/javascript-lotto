@@ -201,4 +201,10 @@ context("e2e test", () => {
     cy.get("section").eq(0).should("have.class", ELEMENT.HIDDEN);
     cy.get("form").eq(1).should("have.class", ELEMENT.HIDDEN);
   });
+
+  it.only("구입 금액을 입력하면 자동 및 수동 구매할 수 있는 창이 나타난다.", () => {
+    cy.get(ELEMENT.PURCHASE_AMOUNT_INPUT).type("3000");
+    cy.get(ELEMENT.PURCHASE_AMOUNT_SUBMIT_BUTTON).click();
+    cy.get(ELEMENT.PURCHASE_OPTION_CONTAINER).should("to.be.visible");
+  });
 });
